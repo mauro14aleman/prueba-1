@@ -8,46 +8,65 @@
 </head>
 <body>
 
+<!-- Pantalla inicial para iniciar música -->
+<div id="musicStart">
+    <div class="musicBox">
+        <h1>🎶 Para ti</h1>
+        <p>
+            Hoy tocaste<br>
+            <strong>La Esperanza de María</strong><br>
+            y quise regalarte esto
+        </p>
+        <button id="startMusic">Tocar música 💜</button>
+    </div>
+</div>
+
+<!-- Reproductor YouTube oculto visualmente -->
+<iframe
+    id="ytPlayer"
+    width="0"
+    height="0"
+    src="https://www.youtube.com/embed/3efBjLYWKCM?enablejsapi=1"
+    frameborder="0"
+    allow="autoplay; encrypted-media">
+</iframe>
+
+<!-- SLIDER -->
 <div id="slider">
     <div class="slide active">
-        <h1>✨ Hoy tocaste precioso ✨</h1>
-        <p>Tu música llenó el lugar y me llenó el corazón.</p>
+        <h1>✨ Hoy tocaste hermoso ✨</h1>
+        <p>Tu música llenó el lugar y mi corazón.</p>
     </div>
 
     <div class="slide">
         <h1>🎶 La lira sonó</h1>
-        <p>y cada nota hablaba de tu dedicación y tu talento.</p>
+        <p>y cada nota hablaba de tu talento.</p>
     </div>
 
     <div class="slide">
         <h1>💫 La Esperanza de María</h1>
-        <p>hoy sonó distinta… porque la tocaste tú.</p>
+        <p>hoy fue aún más especial… porque la tocaste tú.</p>
     </div>
 
     <div class="slide">
         <h1>❤️ Estoy orgulloso</h1>
-        <p>de lo hermoso que tocas y de la mujer increíble que eres.</p>
+        <p>de lo que haces y de la mujer increíble que eres.</p>
     </div>
 
     <div class="slide">
-        <h1 class="final-text">¿Un regalito más?</h1>
+        <h1>¿Un regalito más?</h1>
         <button id="loveButton">Toca acá 💖</button>
     </div>
 </div>
 
+<!-- MENSAJE FINAL -->
 <div id="loveMessage">
     TE AMO 💕<br>
     Besitos en el cachete derecho 😘
 </div>
 
-<!-- Música de fondo -->
-<audio id="bgMusic" loop>
-    <source src="esperanza_de_maria.mp3" type="audio/mpeg">
-</audio>
-
 <script src="script.js"></script>
 </body>
 </html>
-
 
 
