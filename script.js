@@ -1,25 +1,34 @@
 const slides = document.querySelectorAll('.slide');
-const music = document.getElementById('bgMusic');
+const startBtn = document.getElementById('startMusic');
+const musicScreen = document.getElementById('musicStart');
+const ytPlayer = document.getElementById('ytPlayer');
+const loveButton = document.getElementById('loveButton');
+const loveMessage = document.getElementById('loveMessage');
 
 let current = 0;
 let musicStarted = false;
 
-// Cambio de diapositiva + corazones + música
+/* Iniciar música y ocultar pantalla */
+startBtn.addEventListener('click', () => {
+    ytPlayer.src += "&autoplay=1";
+    musicStarted = true;
+
+    musicScreen.style.opacity = "0";
+    setTimeout(() => {
+        musicScreen.style.display = "none";
+    }, 600);
+});
+
+/* Cambiar diapositivas y corazones */
 document.body.addEventListener('click', (event) => {
 
-    // Iniciar música solo al primer toque
-    if (!musicStarted) {
-        music.volume = 0;
-        music.play();
-        musicStarted = true;
-        fadeInMusic();
-    }
+    if (!musicStarted) return;
 
     nextSlide();
     createHeart(event.clientX, event.clientY);
 });
 
-// Cambiar diapositivas
+/* Cambio de slide */
 function nextSlide() {
     slides[current].classList.remove('active');
     current++;
@@ -31,7 +40,7 @@ function nextSlide() {
     slides[current].classList.add('active');
 }
 
-// Corazones
+/* Corazones */
 function createHeart(x, y) {
     const heart = document.createElement('div');
     heart.innerHTML = '❤️';
@@ -45,12 +54,10 @@ function createHeart(x, y) {
     setTimeout(() => heart.remove(), 2000);
 }
 
-// Botón final
-document.getElementById('loveButton').addEventListener('click', (e) => {
+/* Botón final */
+loveButton.addEventListener('click', (e) => {
     e.stopPropagation();
-
-    const message = document.getElementById('loveMessage');
-    message.style.display = 'flex';
+    loveMessage.style.display = 'flex';
 
     for (let i = 0; i < 30; i++) {
         setTimeout(() => {
@@ -62,22 +69,11 @@ document.getElementById('loveButton').addEventListener('click', (e) => {
     }
 
     setTimeout(() => {
-        message.style.display = 'none';
+        loveMessage.style.display = 'none';
         current = 0;
         slides.forEach(s => s.classList.remove('active'));
         slides[0].classList.add('active');
     }, 4000);
 });
 
-// Fade in de la música
-function fadeInMusic() {
-    let vol = 0;
-    const fade = setInterval(() => {
-        if (vol < 0.35) {
-            vol += 0.02;
-            music.volume = vol;
-        } else {
-            clearInterval(fade);
-        }
-    }, 200);
-}
+
